@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Šatník FIIT STU · návrh fakultnej kolekcie</title>
+<meta name="description" content="Návrh fakultného obchodu FIIT STU: mikiny, svetre, tričká, tepláky, čiapky a doplnky v šiestich kolekciách.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Graduate&family=Marcellus&family=Michroma&family=Schibsted+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Yellowtail&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/garment.css">
+<link rel="stylesheet" href="css/shop.css">
+</head>
+<body>
+
+<a class="skip" href="#obchod">Preskočiť na obchod</a>
+
+<header class="top">
+  <div class="wrap top-in">
+    <a class="brand" href="#top" data-nav><span class="brand-name">Šatník</span><span class="brand-sub">FIIT STU</span></a>
+    <nav class="nav" aria-label="Hlavná navigácia">
+      <a href="#kolekcie" data-nav>Kolekcie</a>
+      <a href="#kusovky" data-nav data-nav-solo hidden>Kusovky</a>
+      <a href="#obchod" data-nav>Obchod</a>
+      <a href="#kvalita" data-nav>Kvalita</a>
+    </nav>
+    <button class="cart-btn" type="button" id="cart-open" aria-haspopup="dialog">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4a2.2 2.2 0 1 1 2.2 2.2c-1.4 0-2.2.9-2.2 2.3v.9M12 9.4 3.5 15.2c-1 .7-.5 2.3.7 2.3h15.6c1.2 0 1.7-1.6.7-2.3L12 9.4Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span>Môj výber</span><span class="cart-n" id="cart-n" aria-live="polite">0</span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ══════════ HOME ══════════ -->
+  <div id="home">
+
+    <section class="hero">
+      <div class="wrap hero-head">
+        <p class="eyebrow">FIIT STU · návrh kolekcie 2026</p>
+        <h1 class="hero-title">Šatník</h1>
+        <div class="hero-copy">
+          <p class="lead">Fakultné oblečenie, ktoré unesie akademickú pôdu. Ťažká bavlna, výšivka namiesto nažehľovačiek a desať kolekcií, z ktorých si vyberie prvák aj dekan.</p>
+          <div class="btns">
+            <a class="btn primary" href="#obchod">Otvoriť šatník</a>
+            <a class="btn" href="#kolekcie">Desať kolekcií</a>
+          </div>
+        </div>
+      </div>
+      <div class="rail" aria-label="Výber z kolekcie">
+        <div class="rod" aria-hidden="true"></div>
+        <ul class="rail-list" id="rail"></ul>
+      </div>
+      <div class="wrap"><p class="rail-note" id="rail-note"></p><p class="tagline">Fakultný merch, ktorý nikdy nevznikol. Nuda o štvrtej ráno a tokeny, ktoré nebolo na čo páliť.</p></div>
+    </section>
+
+    <section class="sec" id="kolekcie">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Kolekcie</p>
+          <div>
+            <h2 class="h2">Desať spôsobov, ako nosiť fakultu</h2>
+            <p class="sec-intro">Každá kolekcia má vlastný jazyk a hodí sa na inú príležitosť. Vnútri kolekcie sa kusy dajú kombinovať.</p>
+          </div>
+        </div>
+        <div class="cols" id="cols"></div>
+      </div>
+    </section>
+
+    <section class="sec solo" id="kusovky" hidden>
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Kusovky</p>
+          <div>
+            <h2 class="h2">Úlety, ktoré vyjdú raz</h2>
+            <p class="sec-intro">Mimo kolekcií, v malom počte a s číslom. Niektoré majú na každom kuse inú grafiku. Keď sa minú, už sa nevrátia.</p>
+          </div>
+        </div>
+        <div class="solo-grid" id="solo-grid"></div>
+      </div>
+    </section>
+
+    <section class="sec shop" id="obchod">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Obchod</p>
+          <div>
+            <h2 class="h2">Všetko, čo visí v šatníku</h2>
+            <p class="sec-intro">Klikni na kus pre detail, farby a veľkosti. Čo sa ti páči, pridaj do výberu.</p>
+          </div>
+        </div>
+      </div>
+      <div class="filters" id="filters">
+        <div class="wrap filters-in">
+          <div class="chips" id="cat-chips" role="group" aria-label="Kategória"></div>
+          <div class="selects">
+            <label class="sel"><span>Kolekcia</span><select id="f-col"></select></label>
+            <label class="sel"><span>Zoradiť</span>
+              <select id="f-sort">
+                <option value="rec">Odporúčané</option>
+                <option value="asc">Od najlacnejšieho</option>
+                <option value="desc">Od najdrahšieho</option>
+                <option value="name">Podľa názvu</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="wrap">
+        <p class="count" id="count" aria-live="polite"></p>
+        <div class="grid" id="grid"></div>
+        <div class="empty" id="empty" hidden>
+          <p>V tejto kombinácii zatiaľ nič nevisí.</p>
+          <button class="btn" type="button" id="f-reset">Zrušiť filtre</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="kvalita">
+      <div class="wrap">
+        <div class="sec-head">
+          <p class="eyebrow">Kvalita</p>
+          <div>
+            <h2 class="h2">Prečo to nie je ďalší lacný merch</h2>
+            <p class="sec-intro">Rozdiel medzi mikinou, ktorá skončí v skrini, a tou, ktorú nosíš aj po štúdiu, je v látke a v remesle. Tento štandard platí pre celú kolekciu.</p>
+          </div>
+        </div>
+
+        <div class="std">
+          <div class="table-scroll">
+            <table class="spec-table">
+              <thead><tr><th scope="col">Parameter</th><th scope="col">Bežná lacná mikina</th><th scope="col">Štandard šatníka</th></tr></thead>
+              <tbody>
+                <tr><td>Gramáž</td><td class="old">240–280 g/m²</td><td>420–450 g/m², drží tvar a nepreťahuje sa</td></tr>
+                <tr><td>Materiál</td><td class="old">bavlna s polyesterom, otvorené predenie</td><td>100 % organická česaná bavlna, prstencové predenie</td></tr>
+                <tr><td>Kapucňa</td><td class="old">jednovrstvová, stráca tvar</td><td>dvojvrstvová, podšívka v Pantone 2995</td></tr>
+                <tr><td>Švy</td><td class="old">overlock</td><td>dvojité krycie prešitie, rebrované bočné panely</td></tr>
+                <tr><td>Manžety a lem</td><td class="old">rebro bez elastanu, vyťahuje sa</td><td>rebro 2 × 2 s 5 % elastanu</td></tr>
+                <tr><td>Dekorácia</td><td class="old">DTF transfer, po praní praská</td><td>výšivka, našívané aplikácie, sieťotlač</td></tr>
+                <tr><td>Úprava</td><td class="old">bez úpravy, zráža sa</td><td>predzrážaná, farbená v kuse</td></tr>
+                <tr><td>Etiketa</td><td class="old">etiketa výrobcu polotovaru</td><td>vlastná tkaná etiketa a páska s mottom v golieri</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fine">Ľavý stĺpec opisuje typický lacný promo textil, nie konkrétny kus.</p>
+        </div>
+
+        <div class="about">
+          <figure class="seal-fig garment" id="seal-fig" aria-label="Návrh pečate: otvorená kniha nad páskou s jedenástimi políčkami"></figure>
+          <div class="about-text">
+            <h3 class="h3">Logo je oficiálne, pečať je návrh</h3>
+            <p>Kolekcia Oficiálna používa skutočné logo FIIT STU z grafického manuálu: vždy celé, bez úprav, s ochrannou zónou, vo farebnej, čiernej alebo negatívnej verzii. Všetko ostatné je návrh. Fakulta vlastný erb nemá, tak dostala pečať a tri návrhy erbu, ktoré nájdeš nižšie. Na pečati je otvorená kniha ako myseľ a páska pod ňou ako stroj. Na páske je jedenásť políčok: 11111010011, dvojkovo 2003, rok založenia fakulty. Okolo beží oficiálny názov fakulty a dole motto MENS ET MACHINA.</p>
+            <p>Pečať, motto, monogram aj ostatnú grafiku musí pred výrobou schváliť vedenie fakulty. Bodový raster z loga sa podľa manuálu nesmie použiť samostatne, preto ho mimo loga nikde nenájdeš. Použitie loga na predmetoch treba dohodnúť s fakultou a univerzitou.</p>
+            <dl class="pant">
+              <div><dt><span class="sw" style="background:#00A9E0"></span>FIIT</dt><dd>Pantone 2995 · CMYK 90/0/0/20 · RGB 0/169/224</dd></div>
+              <div><dt><span class="sw" style="background:#971D32"></span>STU</dt><dd>Pantone 201 · CMYK 0/100/65/35 · RGB 151/29/50</dd></div>
+            </dl>
+          </div>
+        </div>
+
+        <div class="crests" id="crests" hidden>
+          <h3 class="h3">Erb: tri návrhy na výber</h3>
+          <p class="crests-intro">Poriadny erb má jednu myšlienku a drží sa heraldických pravidiel: kov na farbe, farba na kove a tvary čitateľné aj na troch centimetroch výšivky. Všetky tri stoja na rovnakom štíte a vo farbách fakulty. Na produktoch je zatiaľ ten označený; vymeniť ho za iný je otázka jedného riadku.</p>
+          <div class="crest-row" id="crest-row"></div>
+        </div>
+
+        <div class="routes">
+          <article class="route">
+            <p class="eyebrow">Výroba, cesta A</p>
+            <h3 class="h3">Šitie na mieru</h3>
+            <p>Kus sa ušije podľa technického listu u výrobcu, typicky v Portugalsku alebo Turecku. Len takto dostaneš farebnú podšívku kapucne, vlastnú gramáž a etikety všité pri šití. Séria obvykle od 100 kusov na farbu, 10 až 14 týždňov.</p>
+          </article>
+          <article class="route">
+            <p class="eyebrow">Výroba, cesta B</p>
+            <h3 class="h3">Prémiový polotovar</h3>
+            <p>Hotový kvalitný kus, na ktorý sa vyšíva a tlačí lokálne. Rýchlejšie a od približne 25 kusov, ale bez farebnej podšívky a vlastného strihu. Vhodné na pilotnú sériu, tričká a doplnky.</p>
+          </article>
+          <article class="route">
+            <p class="eyebrow">Ako začať</p>
+            <h3 class="h3">Predobjednávka</h3>
+            <p>Anketa vyberie kolekcie, vzorka overí látku a výšivku po piatich praniach, predobjednávka ukáže skutočné počty podľa veľkostí a zafinancuje výrobu vopred.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ══════════ PRODUCT ══════════ -->
+  <div id="product" hidden></div>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="foot-brand">Šatník<br>FIIT STU</p>
+    <div class="foot-cols">
+      <div>
+        <h2>Čo je toto</h2>
+        <p>Fakultný merch, ktorý nikdy nevznikol. Nuda o štvrtej ráno a tokeny, ktoré nebolo na čo páliť. Je to návrh fakultného obchodu. Produkty neexistujú, nedá sa tu platiť a ceny sú orientačné odhady s DPH. Výber sa ukladá iba v tvojom prehliadači.</p>
+      </div>
+      <div>
+        <h2>Kresby</h2>
+        <p>Technické náčrty, nie fotografie. Dekorácie sú zakreslené v mierke k veľkosti L. Materiály a gramáže sú návrh zadania pre výrobcu. Logo FIIT STU patrí Slovenskej technickej univerzite.</p>
+      </div>
+      <div>
+        <h2>Zdroje</h2>
+        <ul>
+          <li><a href="https://www.stuba.sk/buxus/docs/stu/informacie_pre/media/graficky_manual/dizajnmanual.pdf">Grafický manuál STU 2012</a>, farby a pravidlá loga</li>
+          <li><a href="https://www.stuba.sk/sk/verejnost-a-media/media/graficky-manual-stu/logo-univerzity/fakult/logo-fiit">Logo FIIT na stuba.sk</a>, oficiálne podklady</li>
+          <li><a href="https://www.fiit.stuba.sk/buxus/docs/vedenie/vyrocna-sprava-o-cinnosti_2017.pdf">Výročná správa FIIT STU 2017</a>, vznik 1. 10. 2003</li>
+        </ul>
+      </div>
+    </div>
+    <p class="colophon"><span>Šatník FIIT STU · návrh 2026</span><span>Ilkovičova 2, 842 16 Bratislava</span></p>
+  </div>
+</footer>
+
+<!-- ══════════ CART ══════════ -->
+<dialog class="drawer" id="cart" aria-labelledby="cart-title">
+  <div class="drawer-in">
+    <header class="drawer-head">
+      <h2 id="cart-title">Môj výber</h2>
+      <button class="icon-btn" type="button" id="cart-close" aria-label="Zavrieť výber">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+    </header>
+    <div class="drawer-body" id="cart-body"></div>
+    <footer class="drawer-foot" id="cart-foot"></footer>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="js/core.js"></script>
+<script src="js/art-crest.js"></script>
+<script src="js/garment-hoodie.js"></script>
+<script src="js/garments-sweats.js"></script>
+<script src="js/garments-tees.js"></script>
+<script src="js/garments-bottoms.js"></script>
+<script src="js/garments-head.js"></script>
+<script src="js/garments-goods.js"></script>
+<script src="js/garments-under.js"></script>
+<script src="js/garments-shirts.js"></script>
+<script src="js/garments-solo-a.js"></script>
+<script src="js/garments-solo-b.js"></script>
+<script src="js/garment-set.js"></script>
+<script src="js/catalog-core.js"></script>
+<script src="js/catalog-logo.js"></script>
+<script src="js/catalog-sweats.js"></script>
+<script src="js/catalog-tees.js"></script>
+<script src="js/catalog-bottoms.js"></script>
+<script src="js/catalog-head.js"></script>
+<script src="js/catalog-goods.js"></script>
+<script src="js/catalog-under.js"></script>
+<script src="js/catalog-shirts.js"></script>
+<script src="js/catalog-monogram.js"></script>
+<script src="js/catalog-life.js"></script>
+<script src="js/catalog-crest.js"></script>
+<script src="js/catalog-solo-a.js"></script>
+<script src="js/catalog-solo-b.js"></script>
+<script src="js/catalog-sets.js"></script>
+<script src="js/shop.js"></script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+/* Šatník FIIT STU — garment drawing styles (shared by shop and dev preview).
+   Colours are CSS custom properties set per colourway by FM.applyWay(). */
+
+@property --body   {syntax:'<color>'; inherits:true; initial-value:#18191C;}
+@property --rib    {syntax:'<color>'; inherits:true; initial-value:#19202F;}
+@property --line   {syntax:'<color>'; inherits:true; initial-value:#05070D;}
+@property --stitch {syntax:'<color>'; inherits:true; initial-value:rgba(255,255,255,.17);}
+@property --fold   {syntax:'<color>'; inherits:true; initial-value:rgba(0,0,0,.28);}
+@property --lining {syntax:'<color>'; inherits:true; initial-value:#00A9E0;}
+@property --cord   {syntax:'<color>'; inherits:true; initial-value:#E7E0CF;}
+@property --aglet  {syntax:'<color>'; inherits:true; initial-value:#B8B0A0;}
+@property --zip    {syntax:'<color>'; inherits:true; initial-value:#00A9E0;}
+@property --teeth  {syntax:'<color>'; inherits:true; initial-value:#B9A779;}
+@property --trim   {syntax:'<color>'; inherits:true; initial-value:#00A9E0;}
+@property --trim2  {syntax:'<color>'; inherits:true; initial-value:#ECE5D3;}
+@property --d1     {syntax:'<color>'; inherits:true; initial-value:#C9A54E;}
+@property --d2     {syntax:'<color>'; inherits:true; initial-value:#00A9E0;}
+@property --d3     {syntax:'<color>'; inherits:true; initial-value:#ECE5D3;}
+@property --d4     {syntax:'<color>'; inherits:true; initial-value:#18191C;}
+@property --page   {syntax:'<color>'; inherits:true; initial-value:#ECE5D3;}
+@property --noise  {syntax:'<number>'; inherits:true; initial-value:.2;}
+@property --heather{syntax:'<number>'; inherits:true; initial-value:0;}
+
+.garment{
+  transition:
+    --body .6s ease, --rib .6s ease, --line .6s ease, --stitch .6s ease, --fold .6s ease,
+    --lining .6s ease, --cord .6s ease, --zip .6s ease, --trim .6s ease, --trim2 .6s ease,
+    --d1 .6s ease, --d2 .6s ease, --d3 .6s ease, --d4 .6s ease, --page .6s ease, --noise .6s ease, --heather .6s ease;
+}
+@media (prefers-reduced-motion:reduce){ .garment{transition:none} }
+
+/* type inside drawings */
+.tx-m{font-family:"Marcellus", Georgia, serif}
+.tx-g{font-family:"Graduate", "Marcellus", serif}
+.tx-s{font-family:"Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif}
+.tx-f{font-family:"Fragment Mono", ui-monospace, Menlo, monospace}
+.tx-y{font-family:"Yellowtail", cursive}
+.tx-w{font-family:"Michroma", "Schibsted Grotesk", sans-serif}
+
+.hd{display:block; width:100%; height:100%; overflow:visible}
+.hd .nz{opacity:var(--noise)}
+.hd .ht{opacity:var(--heather)}
+.hd .ol{fill:none; stroke:var(--line); stroke-width:1.5; stroke-linejoin:round; stroke-linecap:round}
+.hd .ol.thin{stroke-width:1}
+.hd .st{fill:none; stroke:var(--stitch); stroke-width:.9; stroke-dasharray:2.6 2.2}
+.hd .fd{fill:none; stroke:var(--fold); stroke-width:2.6; stroke-linecap:round}
+.hd .ln{fill:var(--lining)}
+.hd .bd-o{fill:none; stroke:var(--line); stroke-width:15.5; stroke-linejoin:round}
+.hd .bd{fill:none; stroke:var(--body); stroke-width:12.5; stroke-linejoin:round}
+.hd .bd-s{fill:none; stroke:url(#g-shade); stroke-width:12.5; stroke-linejoin:round}
+.hd .ey{fill:var(--rib); stroke:var(--line); stroke-width:1}
+.hd .cd-o{fill:none; stroke:var(--line); stroke-width:6.2}
+.hd .cd{fill:none; stroke:var(--cord); stroke-width:4.4}
+.hd .ag{fill:var(--aglet); stroke:var(--line); stroke-width:.8}
+.hd .zt{fill:var(--zip)}
+.hd .zte{stroke:var(--teeth); stroke-width:4.2; stroke-dasharray:1.4 1.1}
+.hd .zp{fill:var(--teeth); stroke:var(--line); stroke-width:.7}
