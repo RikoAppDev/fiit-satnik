@@ -90,9 +90,12 @@ button{cursor:pointer}
   position:relative; z-index:1; margin-top:-7px;
   display:flex; justify-content:center; gap:clamp(6px,1.2vw,22px);
   padding:0 clamp(18px,4vw,56px) 8px; overflow-x:auto; scrollbar-width:none; scroll-snap-type:x proximity;
+  scroll-padding-inline:clamp(18px,4vw,56px);
 }
 .rail-list::-webkit-scrollbar{display:none}
-.hang{flex:none; width:var(--gw); scroll-snap-align:center}
+/* snap to the start: with centre snapping Safari scrolls the rail on load to centre the second
+   piece and cuts the first one in half */
+.hang{flex:none; width:var(--gw); scroll-snap-align:start}
 .hang a{display:block; text-decoration:none}
 .hang-in{transform-origin:50% 0; display:block}
 .hook{display:block; width:34px; height:46px; margin:0 auto -9px; position:relative; z-index:0}
@@ -392,6 +395,24 @@ button{cursor:pointer}
   .card-name{font-size:.92rem}
   .dots{display:none}
   .sel span{display:none}
+  /* the official tile stacks: its three hoodies on top, the text full width under them */
+  .col:first-child{grid-template-columns:1fr}
+  .col:first-child .col-art{order:-1; aspect-ratio:3/2}
+  .col:first-child .col-art.trio .hd{top:3%}
+  .col:first-child .col-text{padding:2px 22px 20px}
+  /* the comparison table becomes one block per parameter, both answers labelled, no sideways scroll */
+  .spec-table{display:block; min-width:0}
+  .spec-table thead{position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap}
+  .spec-table tbody, .spec-table tr{display:block}
+  .spec-table tr{border-top:1px solid var(--rule); padding:14px 0}
+  .spec-table td{display:grid; grid-template-columns:4.4rem minmax(0,1fr); column-gap:12px; border:0; padding:3px 0}
+  .spec-table td:first-child{display:block; white-space:normal; padding-bottom:6px}
+  .spec-table td:nth-child(n+2)::before{font-family:var(--f-mono); font-size:.66rem; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-3); padding-top:.3em}
+  .spec-table td:nth-child(2)::before{content:"Bežná"}
+  .spec-table td:nth-child(3)::before{content:"Šatník"}
+  /* on a small card the edition badge keeps only the count; the section already says kusovky */
+  .badge{left:8px; top:8px; padding:4px 8px; font-size:.62rem}
+  .badge-k{display:none}
 }
 
 @media (prefers-reduced-motion:reduce){

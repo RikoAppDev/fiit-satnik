@@ -142,7 +142,7 @@
     const el = h(`<article class="card garment${views.length > 1 ? ' has-back' : ''}" data-id="${p.id}" data-way="0">
       <a class="card-stage" href="#/p/${p.id}" aria-label="${esc(p.name)}, ${eur(p.price)}">
         <span class="face f1">${FM.render(p, views[0])}</span>${views.length > 1 ? '<span class="face f2"></span>' : ''}
-        ${p.edition ? `<span class="badge">Kusovka · ${p.edition} ks</span>` : ''}
+        ${p.edition ? `<span class="badge"><span class="badge-k">Kusovka · </span>${p.edition} ks</span>` : ''}
       </a>
       <div class="card-meta">
         <p class="card-col">${esc(colOf(p.col).name)}</p>
