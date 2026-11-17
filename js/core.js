@@ -86,8 +86,25 @@
     return g.draw(v, Object.assign({}, opts), deco);
   };
 
+  /* Each rendered <svg> gets its own ids. Drawings declare clip paths, patterns and symbols
+     with fixed ids, and the same product is drawn in many places at once (card, rail, product
+     view, selection). A url(#id) or href="#id" resolves to the first element with that id in
+     the whole document; when that one sits in a hidden part of the page (the home page is
+     display:none while a product is open), the browser applies no clip at all and the art
+     spills out of the garment. Ids declared inside this markup get a per-render suffix;
+     references to the shared paint servers in #fm-defs are left alone. */
+  let scopeN = 0;
+  const scopeIds = svg => {
+    const ids = new Set();
+    svg.replace(/\sid="([^"]+)"/g, (m, id) => { ids.add(id); return m; });
+    if (!ids.size) return svg;
+    const sfx = '_' + (++scopeN).toString(36);
+    return svg.replace(/(\sid="|url\(#|href="#)([^")]+)/g, (m, pre, id) => (ids.has(id) ? pre + id + sfx : m));
+  };
+
   /* Full <svg> for a product. o.box crops (detail views), o.shadow:false hides the floor. */
-  FM.render = (p, view = 'front', o = {}) => {
+  FM.render = (p, view = 'front', o = {}) => scopeIds(renderRaw(p, view, o));
+  const renderRaw = (p, view, o) => {
     const g = FM.garments[p.type];
     if (!g) {
       return `<svg class="hd" viewBox="${FM.BOX}" aria-hidden="true"><rect x="170" y="200" width="300" height="300" rx="8" fill="none" stroke="rgba(21,23,27,.25)" stroke-dasharray="6 6"/><text x="320" y="356" text-anchor="middle" class="tx-f" font-size="13" fill="rgba(21,23,27,.5)">${esc(p.type)}</text></svg>`;
